@@ -1,0 +1,6 @@
+<div id="cart">
+    <h2>This is what's in the cart: </h2>
+    <div class="item-box" ng-repeat="cartItem in $ctrl.cartItems">
+        <p class="cart-items">{{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "name": "node.js-express-lab1",
+  "version": "1.0.0",
+  "description": "GC after hours lab covering npm and express - making a REST API",
+  "main": "server.js",
+  "scripts": {
+    "test": "testing123",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DerekDenHartigh/Node.js-express-lab1.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "api"
+  ],
+  "author": "Derek DenHartigh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DerekDenHartigh/Node.js-express-lab1/issues"
+  },
+  "homepage": "https://github.com/DerekDenHartigh/Node.js-express-lab1#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.11.0"
+  }
+}
