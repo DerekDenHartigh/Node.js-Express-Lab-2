@@ -1,8 +1,9 @@
 "use strict";
 const express = require("express");
-const cartItems = require("./cart-items");
-
+// const cartItems = require("./cart-items"); //not using cart-items.js but the postgreSQL DB
+const cartItems = require("pg"); //?
 const cartItemsPage = express.Router();  // Router has to be capital
+
 
 cartItemsPage.get("/cartItemsPage", (req, res) => {
     // res.writeHead(200, {'content-type': "application/json"})

@@ -1,7 +1,17 @@
 "use strict";
 
 const express = require('express');
+
 const pg = require('pg');
+const pool = new pg.Pool({
+    user: "postgres",
+    password: "polonium84",
+    host: "localhost",
+    port: 3000,
+    database: "postgres",
+    ssl: false
+});
+
 const cartItemsPage = require("./cartItemsPage.js");
 const app = express();
 app.use(express.json());
