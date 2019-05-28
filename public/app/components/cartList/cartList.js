@@ -6,6 +6,19 @@ function CartListController(cartService) {
     const ctrl = this;
     ctrl.service = cartService;
     
+    // initing for function usage
+    ctrl.addType;
+    ctrl.addCost;
+    ctrl.addNumber;
+    ctrl.removedId;
+    ctrl.updatedQuantity;
+    ctrl.updatedId;
+
+    ctrl.addItem = (addType,addCost,addNumber){
+        let newItem = {"product": addType, "price": addCost, "quantity": addNumber}; // package up items into an obj
+        ctrl.service.addItem(newItem);
+    }
+
     // this is for populating the cart initially?
     ctrl.getLiveCartList = ()=>{
         ctrl.service.getAllItems() // returns data from resolve or err from reject

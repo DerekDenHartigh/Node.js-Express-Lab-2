@@ -48,12 +48,12 @@ angular
     };
 
     //PUT
-    service.updateItem = (editedItem, id)=>{
+    service.updateItemQuantity = (editedQuantity, id)=>{
         console.log("editing item");
         return $http({
             url: "/cart-items" + id,
             method: "PUT",
-            data: editedItem
+            data: editedQuantity
         })
         .then((response)=>{
             console.log(response.data);

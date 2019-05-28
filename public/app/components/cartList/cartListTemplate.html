@@ -1,7 +1,27 @@
+<header id="header">
+    <label>add item:
+        <input ng-model="$ctrl.addType" type="text" placeholder="item type (e.g. banana)">
+        <input ng-model="$ctrl.addCost" type="number" min="0.00" step=".01" placeholder="item cost (e.g. 5.99)">
+        <input ng-model="$ctrl.addNumber" type="number" min="1" step="1" placeholder="how many?">
+        <button ng-click="$ctrl.addItem($ctrl.addType,$ctrl.addCost,$ctrl.addNumber)">Add</button>
+    </label>
+    
+    <label>remove item:
+        <input ng-model="$ctrl.removedId" type="number" min="1" step="1" placeholder="item id #">
+        <button ng-click="$ctrl.service.removeItem($ctrl.removedId)">Remove</button>
+    </label>
+
+    <label>update quantity of item:
+        <input ng-model="$ctrl.updatedId" type="number" min="1" step="1" placeholder="item id #">
+        <input ng-model="$ctrl.updatedQuantity" type="number" min="0" step="1" placeholder="new amount">
+        <button ng-click="$ctrl.service.updateItemQuantity($ctrl.updatedQuantity,$ctrl.updatedId)">Update</button>
+    </label>
+</header>
+
 <div id="cart">
     <h2>This is what's in the cart: </h2>
     <div class="item-box" ng-repeat="cartItem in $ctrl.cartItems">
-        <p class="cart-items">{{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
+        <p class="cart-items">ID#{{cartItem.id}}, {{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
     </div>
     <img id="cartMan" src="images/cartMan.png">
 </div>
