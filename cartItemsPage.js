@@ -4,6 +4,16 @@ const cartItems = require("./cart-items"); //not using cart-items.js but the pos
 // const cartItems = require("pg"); //?
 const cartItemsPage = express.Router();  // Router has to be capital
 
+let getList = function(){
+    pool.query("SELECT * FROM shopping_cart")
+    .then((result) => {
+        console.warn("from getList in server.js")
+        console.warn(result.rows);
+        ctrl.cartItems = result.rows;
+    });
+}
+getList();
+
 
 cartItemsPage.get("/cartItemsPage", (req, res) => {
     // res.writeHead(200, {'content-type': "application/json"})

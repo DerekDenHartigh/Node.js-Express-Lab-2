@@ -15,15 +15,6 @@ const pool = new pg.Pool({
 
 // pool is defined here, but... IDK what I'm doing w/ this tbh,
 // I'm trying to query the db for the whole table, then... I want to return the table for use by front-end but.. how?
-let getList = function(){
-    pool.query("SELECT * FROM shopping_cart")
-    .then((result) => {
-        console.warn("from getList in server.js")
-        console.warn(result.rows);
-        ctrl.cartItems = result.rows;
-    });
-}
-getList();
 
 // me trying to apply something from the internet that broke my code:
 // let getList = (request, response)=>{

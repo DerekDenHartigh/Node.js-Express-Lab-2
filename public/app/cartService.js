@@ -24,7 +24,8 @@ angular
     service.getCart = ()=>{
         console.log("getting cart");
         return $http({
-            url: "/cart-items",
+            // url: "/cart-items",
+            url: "/cartItemsPage",
             method: "GET"
         })
         .then((response)=>{
@@ -38,12 +39,13 @@ angular
     service.addItem = (newItem)=>{
         console.log("adding item");
         return $http({
-            url: "/cart-items",
+            // url: "/cart-items",
+            url: "/cartItemsPage",
             method: "POST",
             data: newItem
             })
         .then((response)=>{
-            console.log(resopnse.data);
+            console.log(response.data);
             return response.data;
         });
     };
@@ -52,7 +54,8 @@ angular
     service.updateItemQuantity = (editedQuantity, id)=>{
         console.log("editing item");
         return $http({
-            url: "/cart-items" + id,
+            // url: "/cart-items" + id,
+            url: "/cartItemsPage"+id,
             method: "PUT",
             data: editedQuantity
         })
@@ -65,7 +68,9 @@ angular
     //Delete
     service.deleteItem = (id)=>{
         console.log("deleting item");
-        return $http({url: "/cart-items" + id,
+        return $http({
+            // url: "/cart-items" + id,
+            url: "/cartItemsPage"+id,
             method: "DELETE"
         })
         .then((response)=>{
