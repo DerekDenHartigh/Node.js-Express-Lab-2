@@ -8,7 +8,7 @@
     
     <label>remove item:
         <input ng-model="$ctrl.removedId" type="number" min="1" step="1" placeholder="item id #">
-        <button ng-click="$ctrl.service.removeItem($ctrl.removedId)">Remove</button>
+        <button ng-click="$ctrl.service.deleteItem($ctrl.removedId)">Remove</button>
     </label>
 
     <label>update quantity of item:

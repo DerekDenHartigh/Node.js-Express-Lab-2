@@ -55,7 +55,7 @@ angular
         console.log("editing item");
         return $http({
             // url: "/cart-items" + id,
-            url: "/cartItemsPage"+id,
+            url: "/cartItemsPage/"+id,
             method: "PUT",
             data: editedQuantity
         })
@@ -70,7 +70,7 @@ angular
         console.log("deleting item");
         return $http({
             // url: "/cart-items" + id,
-            url: "/cartItemsPage"+id,
+            url: "/cartItemsPage/"+id,
             method: "DELETE"
         })
         .then((response)=>{

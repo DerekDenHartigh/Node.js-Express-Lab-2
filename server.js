@@ -2,16 +2,7 @@
 
 const express = require('express');
 
-const pg = require('pg');
 
-const pool = new pg.Pool({
-    user: "postgres",
-    password: "polonium84",
-    host: "localhost",
-    port: 3000,
-    database: "ExpressShopDB",
-    ssl: false
-});
 
 // pool is defined here, but... IDK what I'm doing w/ this tbh,
 // I'm trying to query the db for the whole table, then... I want to return the table for use by front-end but.. how?

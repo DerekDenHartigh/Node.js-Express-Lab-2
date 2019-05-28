@@ -4,6 +4,16 @@ const cartItems = require("./cart-items"); //not using cart-items.js but the pos
 // const cartItems = require("pg"); //?
 const cartItemsPage = express.Router();  // Router has to be capital
 
+const pg = require('pg');
+const pool = new pg.Pool({
+    user: "postgres",
+    password: "polonium84",
+    host: "localhost",
+    port: 3000,
+    database: "ExpressShopDB",
+    ssl: false
+});
+
 let getList = function(){
     pool.query("SELECT * FROM shopping_cart")
     .then((result) => {
@@ -25,6 +35,16 @@ cartItemsPage.get("/cartItemsPage", (req, res) => {
 cartItemsPage.post("/cartItemsPage", (req, res) => {
     res.send("adding item to cart");
     console.log(req.body);
+
+
+    pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES (req.body.product, req.body.price, req.body.quantity)', (error, results) => {
+        if (error) {
+          throw error
+        }
+        response.status(201).send(`Added item ID: ${res.id}, ${res.quantity} ${res.product} costing ${res.price}`)
+      })
+
+
     });
 // accept PUT request at URI: /cartItemsPage
 cartItemsPage.put("/cartItemsPage/:id", (req, res) => {
