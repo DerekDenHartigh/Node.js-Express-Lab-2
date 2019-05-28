@@ -21,6 +21,21 @@ let getList = function(){
         console.log(result.rows);
         ctrl.cartItems = result.rows;
     });
+
+// me trying to apply something from the internet that broke my code:
+// let getList = (request, response)=>{
+//     pool.query("SELECT * FROM shopping_cart", (error, results)=>{
+//         if (error){
+//             throw error
+//         }
+//         response.status(200).json(results.rows)
+//     })
+//     .then((result) => {
+//         console.log(result.rows);
+//         ctrl.cartItems = result.rows;
+//     });
+
+
 }
 
 getList();
