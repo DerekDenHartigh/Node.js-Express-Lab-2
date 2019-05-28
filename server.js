@@ -9,7 +9,7 @@ const pool = new pg.Pool({
     password: "polonium84",
     host: "localhost",
     port: 3000,
-    database: "postgres",
+    database: "ExpressShopDB",
     ssl: false
 });
 
@@ -18,9 +18,12 @@ const pool = new pg.Pool({
 let getList = function(){
     pool.query("SELECT * FROM shopping_cart")
     .then((result) => {
-        console.log(result.rows);
+        console.warn("from getList in server.js")
+        console.warn(result.rows);
         ctrl.cartItems = result.rows;
     });
+}
+getList();
 
 // me trying to apply something from the internet that broke my code:
 // let getList = (request, response)=>{
@@ -34,11 +37,8 @@ let getList = function(){
 //         console.log(result.rows);
 //         ctrl.cartItems = result.rows;
 //     });
-
-
-}
-
-getList();
+// };
+//     getList();
 
 const cartItemsPage = require("./cartItemsPage.js");
 const app = express();

@@ -9,6 +9,7 @@ angular
         return $q(function(resolve, reject){
             $http.get('/cartItemsPage') // calls our localhost:3000/cartItemPage endpoint
             .then((response)=>{ // takes response data, logs it, and returns it (via resolve)
+                console.log("from cartService.JS")
                 console.log(response.data)
                 resolve(response.data);
             })
