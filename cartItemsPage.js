@@ -36,12 +36,12 @@ cartItemsPage.post("/cartItemsPage", (req, res) => {
     res.send("adding item to cart");
     console.log(req.body);
 
-
     pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES (req.body.product, req.body.price, req.body.quantity)', (error, results) => {
+    // pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES ($1, $2, $3)', [product, price, quantity], (error, results) => {
         if (error) {
-          throw error
+          throw error;
         }
-        response.status(201).send(`Added item ID: ${res.id}, ${res.quantity} ${res.product} costing ${res.price}`)
+        response.status(201).send(`Added item ID: ${results.id}, ${results.quantity} ${results.product} costing ${results.price}`)
       })
 
 
