@@ -1,11 +1,36 @@
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+    body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    h1{
+        font-weight: bold;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    h2{
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
 #cart{
+    position: relative;
     background-color: wheat;
     border-radius: 10px;
+    padding: 10px;
+    line-height: 1.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,19 +39,28 @@ body{
     align-items: center;
 }
 
-.item-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    justify-items: flex-start;
-    align-content: center;
-    align-items: center;:
-}
-.cart-items{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    justify-items: flex-start;
-    align-content: center;
-    align-items: center;
-}
+    .item-box{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        align-content: center;
+        align-items: center;
+    }
+        .cart-items{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            align-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+    
+    #cartMan{
+        z-index: -1;
+        position: absolute;
+        left: -625px;
+        bottom: -225px;
+    }
