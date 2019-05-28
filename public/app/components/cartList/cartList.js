@@ -14,16 +14,16 @@ function CartListController(cartService) {
     ctrl.updatedQuantity;
     ctrl.updatedId;
 
-    ctrl.addItem = (addType,addCost,addNumber){
+    ctrl.addItem = (addType,addCost,addNumber)=>{
         let newItem = {"product": addType, "price": addCost, "quantity": addNumber}; // package up items into an obj
         ctrl.service.addItem(newItem);
-    }
+    };
 
     // this is for populating the cart initially?
     ctrl.getLiveCartList = ()=>{
         ctrl.service.getAllItems() // returns data from resolve or err from reject
         .then((data)=>{
-            ctrl.cartItems = data;
+            ctrl.liveCartItems = data;
         })
         .catch((err)=>{
             console.error(err);
@@ -31,6 +31,8 @@ function CartListController(cartService) {
     };
     ctrl.getLiveCartList();  // runs the get from our stuff
 
+
+    // moved to server since pool is undefined here.
     // ctrl.getList = ()=>{
     //     pool.query("SELECT * FROM shopping_cart")
     //     .then((result) => {

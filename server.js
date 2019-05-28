@@ -3,6 +3,7 @@
 const express = require('express');
 
 const pg = require('pg');
+
 const pool = new pg.Pool({
     user: "postgres",
     password: "polonium84",
@@ -11,6 +12,18 @@ const pool = new pg.Pool({
     database: "postgres",
     ssl: false
 });
+
+// pool is defined here, but... IDK what I'm doing w/ this tbh,
+// I'm trying to query the db for the whole table, then... I want to return the table for use by front-end but.. how?
+let getList = function(){
+    pool.query("SELECT * FROM shopping_cart")
+    .then((result) => {
+        console.log(result.rows);
+        ctrl.cartItems = result.rows;
+    });
+}
+
+getList();
 
 const cartItemsPage = require("./cartItemsPage.js");
 const app = express();
