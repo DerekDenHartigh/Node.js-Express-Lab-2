@@ -19,30 +19,6 @@ function CartListController(cartService) {
         ctrl.service.addItem(newItem);
     };
 
-    // this is for populating the cart initially?
-    ctrl.getLiveCartList = ()=>{
-        ctrl.service.getAllItems() // returns data from resolve or err from reject
-        .then((data)=>{
-            ctrl.liveCartItems = data;
-        })
-        .catch((err)=>{
-            console.error(err);
-        })
-    };
-    ctrl.getLiveCartList();  // runs the get from our stuff
-
-
-    // moved to server since pool is undefined here.
-    // ctrl.getList = ()=>{
-    //     pool.query("SELECT * FROM shopping_cart")
-    //     .then((result) => {
-    //         console.log(result.rows);
-    //         ctrl.cartItems = result.rows;
-    //     });
-    // }
-
-    // ctrl.getList();
-
     }
 
 angular
