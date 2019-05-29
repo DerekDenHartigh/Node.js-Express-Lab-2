@@ -14,14 +14,14 @@
     <label>update quantity of item:
         <input ng-model="$ctrl.updatedId" type="number" min="1" step="1" placeholder="item id #">
         <input ng-model="$ctrl.updatedQuantity" type="number" min="0" step="1" placeholder="new amount">
-        <button ng-click="$ctrl.service.updateItemQuantity($ctrl.updatedQuantity,$ctrl.updatedId)">Update</button>
+        <button ng-click="$ctrl.service.updateItemQuantity($ctrl.updatedQuantity, $ctrl.updatedId)">Update</button>
     </label>
 </header>
 
 <div id="cart">
     <button ng-click="$ctrl.getLiveCartList()">This is what's in the cart: </button>
     <div class="item-box" ng-repeat="cartItem in $ctrl.cartItems">
-        <p class="cart-items">ID#{{cartItem.id}}, {{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
+        <p class="cart-items">ID#{{cartItem.item_id}}, {{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
     </div>
     <img id="cartMan" src="images/cartMan.png">
 </div>

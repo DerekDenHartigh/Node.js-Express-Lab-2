@@ -24,7 +24,8 @@ function CartListController(cartService) {
         console.log("getting cart items...")
         ctrl.service.getCart() // returns data from resolve or err from reject
         .then((data)=>{
-            ctrl.CartItems = data;
+            console.warn(data);
+            ctrl.cartItems = data;
         })
         .catch((err)=>{
             console.error(err);
