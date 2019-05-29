@@ -13,21 +13,11 @@ const pool = new pg.Pool({
     database: "ExpressShopDB",
     ssl: false
 });
+
 // an error listener to log my errors and maybe keep my code from crashing?
 pool.on('error', (err) => {
     console.error('An idle client has experienced an error', err.stack)
   })
-
-// I was trying to generate the database here
-let getList = function(){
-    pool.query("SELECT * FROM shopping_cart")
-    .then((result) => {
-        console.warn("from getList() in server.js")
-        console.warn(result.rows);
-    });
-};
-getList();
-
 
 cartItemsPage.get("/cartItemsPage", (req, res) => {
     // res.writeHead(200, {'content-type': "application/json"})
