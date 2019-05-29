@@ -51,18 +51,42 @@ angular
     };
 
     //PUT
+    // service.updateItemQuantity = (editedQuantity, id)=>{
+    //     console.log(`editing item #${id}`);
+    //     console.log(`editedQuantity: ${editedQuantity}`);
+    //     return $http({
+    //         // url: "/cartItemsPage/"+id,
+    //         url: `/cartItemsPage/${id}`,
+    //         data: editedQuantity,
+    //         method: "PUT"
+    //     })
+    //     .then((response)=>{
+    //         console.log(`item#${id} updated, \n${response.data}`);
+    //     })
+    //     .catch((error)=>{
+    //         console.error(error);
+    //     });
+    // };
+
+
     service.updateItemQuantity = (editedQuantity, id)=>{
         console.log(`editing item #${id}`);
         console.log(`editedQuantity: ${editedQuantity}`);
         return $http({
-            url: "/cartItemsPage/"+id,
-            method: "PUT",
-            data: editedQuantity
+            // url: "/cartItemsPage/"+id,
+            url: "cartItemsPage",
+            data: {item_id: id, quantity: editedQuantity},
+            method: "PUT"
         })
-        // .then((response)=>{
-        //     console.log(`item#${id} updated, \n${response.data}`);
-        // });
+        .then((response)=>{
+            console.log(`item#${id} updated, \n${response.data}`);
+        })
+        .catch((error)=>{
+            console.error(error);
+        });
     };
+
+
 
     //Delete
     service.deleteItem = (id)=>{

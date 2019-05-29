@@ -45,18 +45,42 @@ cartItemsPage.post("/cartItemsPage", (req, res) => {
     });
 
 // accept PUT request at URI: /cartItemsPage
-cartItemsPage.put("/cartItemsPage/:id", (req, res) => {
-    console.log(req);
-    console.log(req.params.id, req.body);
-    let sql = `UPDATE shopping_cart SET quantity=$1::int WHERE item_id=$2::int;`;
-    let values = [req.body, req.params.id];
+// cartItemsPage.put("/cartItemsPage/:id", (req, res) => {
+//     // console.log(req);
+//     console.log(req.params.id, req.body);
+//     let sql = `UPDATE shopping_cart SET quantity = ${req.body} WHERE item_id=${req.params.id};`;
+//     // let values = [req.body, req.params.id];
     
-    pool.query(sql, values).then((result)=>{
+//     pool.query(sql)
+//     .then((result)=>{
+//         console.log("updated item quantity");
+//         res.status(204);
+//         res.send("updated item quantity");
+//     })
+//     .catch((error)=>{
+//         console.error(error);
+//     });
+//     });
+
+
+cartItemsPage.put("/cartItemsPage/", (req, res) => {
+    // console.log(req);
+    console.log(req.body.item_id, req.body.quantity);
+    let sql = `UPDATE shopping_cart SET quantity = ${req.body.quantity} WHERE item_id=${req.body.item_id};`;
+    // let values = [req.body, req.params.id];
+    
+    pool.query(sql)
+    .then((result)=>{
         console.log("updated item quantity");
-        res.status(201);
+        res.status(204);
         res.send("updated item quantity");
     })
+    .catch((error)=>{
+        console.error(error);
     });
+    });
+
+
 
 // accept DELETE request at URI: /cartItemsPage
 cartItemsPage.delete("/cartItemsPage/:id", (req, res) => {
