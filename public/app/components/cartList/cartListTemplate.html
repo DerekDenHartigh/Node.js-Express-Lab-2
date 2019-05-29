@@ -20,7 +20,7 @@
 
 <div id="cart">
     <button ng-click="$ctrl.getLiveCartList()">This is what's in the cart: </button>
-    <div class="item-box" ng-repeat="cartItem in $ctrl.liveCartItems">
+    <div class="item-box" ng-repeat="cartItem in $ctrl.cartItems">
         <p class="cart-items">ID#{{cartItem.id}}, {{cartItem.quantity}} {{cartItem.product}} costing ${{cartItem.price}} each.</p>
     </div>
     <img id="cartMan" src="images/cartMan.png">

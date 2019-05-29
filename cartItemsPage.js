@@ -19,18 +19,16 @@ pool.on('error', (err) => {
     console.error('An idle client has experienced an error', err.stack)
   })
 
+
 cartItemsPage.get("/cartItemsPage", (req, res) => {
-    // res.writeHead(200, {'content-type': "application/json"})
-    //console.log("\n\nhere are the items in your cart:")
-    //console.log(cartItems);  // for the console log - lists items in cart-items.js
-    //res.send(cartItems); // this corresponds to the data being getted (gotten from the $http.get())
-    pool.query('SELECT * FROM shopping_cart;').then((error, result)=>{
-        if (error) {
-            throw error;
-        }
-        console.log(result.rows);
-        res.send(result.rows);
-    })
+    pool.query('SELECT * FROM shopping_cart;')
+        .then((result)=>{
+            console.log(result.rows);
+            res.send(result.rows);
+        })
+        .catch((error)=>{
+            console.error(error);
+        });
     });
 
 // accept POST request at URI: /cartItemsPage

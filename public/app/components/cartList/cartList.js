@@ -21,15 +21,15 @@ function CartListController(cartService) {
 
     // this is for populating the cart initially?
     ctrl.getLiveCartList = ()=>{
-        ctrl.service.getAllItems() // returns data from resolve or err from reject
+        console.log("getting cart items...")
+        ctrl.service.getCart() // returns data from resolve or err from reject
         .then((data)=>{
-            ctrl.liveCartItems = data;
+            ctrl.CartItems = data;
         })
         .catch((err)=>{
             console.error(err);
         })
     };
-    ctrl.getLiveCartList();  // runs the get from our stuff
 
 
     // moved to server since pool is undefined here.

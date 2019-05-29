@@ -5,20 +5,20 @@ angular
 .service("cartService", function($http, $q){
     const service = this;
 
-    service.getAllItems = ()=>{
-        return $q(function(resolve, reject){
-            $http.get('/cartItemsPage') // calls our localhost:3000/cartItemPage endpoint
-            .then((response)=>{ // takes response data, logs it, and returns it (via resolve)
-                console.log("from cartService.JS")
-                console.log(response.data)
-                resolve(response.data);
-            })
-            .catch((err)=>{ // takes error if http get fails, logs and returns error (via reject)
-                console.error(err);
-                reject(err);
-            })
-        })
-    }
+    // service.getAllItems = ()=>{
+    //     return $q(function(resolve, reject){
+    //         $http.get('/cartItemsPage') // calls our localhost:3000/cartItemPage endpoint
+    //         .then((response)=>{ // takes response data, logs it, and returns it (via resolve)
+    //             console.log("from cartService.JS")
+    //             console.log(response.data)
+    //             resolve(response.data);
+    //         })
+    //         .catch((err)=>{ // takes error if http get fails, logs and returns error (via reject)
+    //             console.error(err);
+    //             reject(err);
+    //         })
+    //     })
+    // }
 
     //GET
     service.getCart = ()=>{
@@ -29,10 +29,12 @@ angular
             method: "GET"
         })
         .then((response)=>{
-
             console.log(response.data);
             return response.data;
-        });
+        })
+        .catch((err)=>{
+            console.error(err);
+        })
     };
 
     //POST
