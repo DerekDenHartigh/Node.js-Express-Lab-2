@@ -46,10 +46,9 @@ cartItemsPage.post("/cartItemsPage", (req, res) => {
 
 // accept PUT request at URI: /cartItemsPage
 cartItemsPage.put("/cartItemsPage/:id", (req, res) => {
-    // res.send("altering cart item");
     console.log(req);
-    // console.log(req.params.id, req.body);
-    let sql = `UPDATE shopping_cart SET quantity=$1::int WHERE item_id=$3::int;`
+    console.log(req.params.id, req.body);
+    let sql = `UPDATE shopping_cart SET quantity=$1::int WHERE item_id=$2::int;`;
     let values = [req.body, req.params.id];
     
     pool.query(sql, values).then((result)=>{
@@ -57,7 +56,6 @@ cartItemsPage.put("/cartItemsPage/:id", (req, res) => {
         res.status(201);
         res.send("updated item quantity");
     })
-    
     });
 
 // accept DELETE request at URI: /cartItemsPage

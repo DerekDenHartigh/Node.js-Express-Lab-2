@@ -38,7 +38,7 @@ angular
 
     //POST
     service.addItem = (newItem)=>{
-        console.log("adding item");
+        console.log("adding item\n",newItem);
         return $http({
             url: "/cartItemsPage",
             method: "POST",
@@ -59,9 +59,9 @@ angular
             method: "PUT",
             data: editedQuantity
         })
-        .then((response)=>{
-            console.log(`item#${id} updated, \n${response.data}`);
-        });
+        // .then((response)=>{
+        //     console.log(`item#${id} updated, \n${response.data}`);
+        // });
     };
 
     //Delete
