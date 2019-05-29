@@ -1,5 +1,5 @@
 {
-  "name": "node.js-express-lab1",
+  "name": "node.js-express-lab2",
   "version": "1.0.0",
   "description": "GC after hours lab covering npm and express - making a REST API",
   "main": "server.js",

@@ -13,35 +13,49 @@ const pool = new pg.Pool({
     database: "ExpressShopDB",
     ssl: false
 });
+// an error listener to log my errors and maybe keep my code from crashing?
+pool.on('error', (err) => {
+    console.error('An idle client has experienced an error', err.stack)
+  })
 
+// I was trying to generate the database here
 let getList = function(){
     pool.query("SELECT * FROM shopping_cart")
     .then((result) => {
-        console.warn("from getList in server.js")
+        console.warn("from getList() in server.js")
         console.warn(result.rows);
-        ctrl.cartItems = result.rows;
     });
-}
+};
 getList();
 
 
 cartItemsPage.get("/cartItemsPage", (req, res) => {
     // res.writeHead(200, {'content-type': "application/json"})
-    console.log("here are the items in your cart:\n")
-    res.send(cartItems); // this corresponds to the data being getted (gotten from the $http.get())
+    //console.log("\n\nhere are the items in your cart:")
+    //console.log(cartItems);  // for the console log - lists items in cart-items.js
+    //res.send(cartItems); // this corresponds to the data being getted (gotten from the $http.get())
+    pool.query('SELECT * FROM shopping_cart;').then((error, result)=>{
+        if (error) {
+            throw error;
+        }
+        console.log(result.rows);
+        res.send(result.rows);
+    })
     });
 
 // accept POST request at URI: /cartItemsPage
 cartItemsPage.post("/cartItemsPage", (req, res) => {
     res.send("adding item to cart");
     console.log(req.body);
-
-    pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES (req.body.product, req.body.price, req.body.quantity)', (error, results) => {
-    // pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES ($1, $2, $3)', [product, price, quantity], (error, results) => {
+    // console.log(req.body.product, req.body.price, req.body.quantity);
+    // pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES (req.body.product, req.body.price, req.body.quantity)', (error, results) => {
+    // pool.query('INSERT INTO ExpressShopDB (product, price, quantity) VALUES ($1, $2, $3)', [req.body.product, req.body.price, req.body.quantity], (error, results) => {
+        pool.query(`INSERT INTO shopping_cart (product, price, quantity) VALUES (${req.body.product}, ${req.body.price}, ${req.body.quantity});`, (error, result) => {
         if (error) {
           throw error;
         }
-        response.status(201).send(`Added item ID: ${results.id}, ${results.quantity} ${results.product} costing ${results.price}`)
+        result.status(201).send(`Added item to cart`); // my adaptation
+        // response.status(201).send(`User added with ID: ${result.insertId}`) // from the blog
       })
 
 
